@@ -1,13 +1,23 @@
-# Sample Hardhat Project
+# Chainlink Pricefeed Demo
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates how to fetch the latest ETH/USD price using Chainlink Price Feeds on the Arbitrum Sepolia network.
 
-Try running some of the following tasks:
+## Quick Start
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+1. Install dependencies: `npm install`
+2. Compile the contract: `npx hardhat compile`
+3. Run tests: `npx hardhat test`
+4. Deploy to Arbitrum Sepolia: `npx hardhat run scripts/deploy.js --network arbitrum-sepolia`
+5. Interact with the deployed contract using Hardhat console or scripts.
+
+## Deployed Contract Interaction
+
+To fetch the latest price from the deployed contract, use the `getLatestPrice` function:
+
+```javascript
+const contract = await ethers.getContractAt(
+  "PricefeedConsumer",
+  "DEPLOYED_CONTRACT_ADDRESS"
+);
+console.log(await contract.getLatestPrice());
 ```
